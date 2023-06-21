@@ -8,8 +8,15 @@ class Articles(models.Model):
     full_text = models.TextField('Статья')
     date = models.DateTimeField('Дата публикации')
 
+    # При обращении помогает выводить только title.
+    # Без него <QuerySet [<Articles: Articles object (1)>, <Articles: Articles object (2)>, <Articles: Articles object (3)>]>
+    # С ним title новостей. Именно тайтл, который в бд забиваешь. В моем случае
+    # <QuerySet [<Articles: Проверка работы>, <Articles: 9 отличных сервисов для проверки кода>, <Articles: Топ 10 игр для пандемии>]>
+    # Можно забить anons, а можно косячок, но суть одна наркотики - говно.
+    #  <QuerySet [<Articles: Очень крутая новость>, <Articles: хип-хоп>, <Articles: Мда уж>]>
+
     def __str__(self):
-        return self.title
+        return self.anons
 
     class Meta:
         verbose_name = 'Новость'
