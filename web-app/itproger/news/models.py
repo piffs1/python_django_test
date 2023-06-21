@@ -18,6 +18,9 @@ class Articles(models.Model):
     def __str__(self):
         return self.anons
 
+    def get_absolute_url(self):
+        return f'/news/{self.id}' #Начальный слеш не потеряй, а то башенку снесут
+
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
